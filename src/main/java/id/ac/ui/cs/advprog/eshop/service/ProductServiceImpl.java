@@ -23,17 +23,27 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(String productId) {
-        return productRepository.findById(productId);
+        Product product = null;
+        Iterator<Product> products = productRepository.findAll();
+        while (products.hasNext()) {
+            Product tmp = products.next();
+            if (tmp.getProductId().equals(productId)){
+                product = tmp;
+                break;
+            }
+        }
+        return product;
     }
 
     @Override
     public Product update(Product product) {
-        Product existingProduct = productRepository.findById(product.getProductId());
-        if (existingProduct != null) {
-            existingProduct.setProductName(product.getProductName());
-            existingProduct.setProductQuantity(product.getProductQuantity());
-        }
-        return existingProduct;
+        productRepository.update(product);
+        return product;
+    }
+
+    @Override
+    public boolean delete(Product product) {
+        return productRepository.delete(product);
     }
 
 

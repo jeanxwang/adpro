@@ -16,11 +16,18 @@ public class ProductRepository {
         return product;
     }
 
-    public Product findById(String productId) {
-        return productData.stream()
-                .filter(product -> product.getProductId().equals(productId))
-                .findFirst()
-                .orElse(null);
+    public Product update(Product product) {
+        for (int i = 0; i < productData.size(); i++) {
+            Product current = productData.get(i);
+            if (current.getProductId().equals(product.getProductId())) {
+                return productData.set(i, product);
+            }
+        }
+        return null;
+    }
+
+    public boolean delete(Product product) {
+        return productData.remove(product);
     }
 
     public Iterator<Product> findAll() {

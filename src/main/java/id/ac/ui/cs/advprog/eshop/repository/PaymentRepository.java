@@ -35,4 +35,9 @@ public class PaymentRepository {
         // Jika tidak ditemukan, kembalikan null
         return null;
     }
+
+    public List<Payment> findAll() {
+        // Kembalikan semua data pembayaran yang ada dalam repository
+        return new ArrayList<>(paymentData);
+    }
 }

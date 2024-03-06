@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
-    private List<Product> products; but
+    private List<Product> products;
     @BeforeEach
     void setUp() {
         this.products = new ArrayList<>();

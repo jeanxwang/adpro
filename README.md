@@ -4,6 +4,7 @@
 * [Tutorial 1](#tutorial-1)
 * [Tutorial 2](#tutorial-2)
 * [Tutorial 3](#tutorial-3)
+* [Tutorial 4](#tutorial-4)
 
 <a name="tutorial-1"></a>
 ## Tutorial 1 - Reflection
@@ -38,3 +39,9 @@ Saya merasa pua setelah melakukan _unit test_. Terdapat tiga _unit test_ pada ke
 
 3. - **Single Responsibility Principle(SRP)** --- Jika tidak menerapkan SRP, satu kelas mungkin memiliki terlalu banyak tanggung jawab. Misalnya, jika `CarRepository` juga bertanggung jawab untuk menghasilkan UUID, ini akan membuat kelas tersebut lebih sulit untuk dipahami dan dikelola.
 - **Dependency Inversion Principle (DIP)** --- Jika tidak menerapkan DIP, `CarController` mungkin bergantung langsung pada `CarServiceImpl`. Ini berarti bahwa setiap perubahan di `CarServiceImpl` dapat mempengaruhi `CarController`, yang membuat kode kurang fleksibel dan lebih sulit untuk diperbarui atau diperluas.
+
+
+<a name="tutorial-4"></a>
+## Tutorial 4 - Reflection
+1. _Flow_ TDD ini sudah cukup bermanfaat bagi saya. Saya menjadi lebih paham makna "_test-driven_" setelah mengikuti tutorial.
+2. Secara keseluruhan, _tests_ yang dibuat sudah cukup memenuhi F.I.R.S.T. _principle_. Seluruh _tests_ sudah mencakup skenario sukses dan gagal. _Tests_ juga sudah menggunakan `@BeforeEach` sehingga setiap tes dapat dijalankan secara mandiri.

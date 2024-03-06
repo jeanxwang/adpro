@@ -33,4 +33,23 @@ public class PaymentRepositoryTest {
         // Assert
         assertEquals(payment, savedPayment);
     }
+
+    @Test
+    void testFindById() {
+        // Arrange
+        String id = "123456";
+        String method = "Bank Transfer";
+        String status = "WAITING";
+        Map<String, String> paymentData = new HashMap<>();
+        paymentData.put("bankName", "Example Bank");
+        paymentData.put("referenceCode", "123456789");
+        Payment payment = new Payment(id, method, status, paymentData);
+        paymentRepository.save(payment);
+
+        // Act
+        Payment foundPayment = paymentRepository.findById(id);
+
+        // Assert
+        assertEquals(payment, foundPayment);
+    }
 }

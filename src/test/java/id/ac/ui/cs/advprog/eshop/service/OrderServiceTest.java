@@ -96,7 +96,7 @@ class OrderServiceTest {
         assertThrows(NoSuchElementException.class,
                 () -> orderService.updateStatus("zczc", OrderStatus.SUCCESS.getValue()));
 
-        verify(orderRepository, times(1)).save(any(Order.class));
+        verify(orderRepository, times(0)).save(any(Order.class));
     }
 
     @Test

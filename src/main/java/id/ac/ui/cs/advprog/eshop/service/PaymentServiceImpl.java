@@ -13,11 +13,8 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     public Payment addPayment(Order order, String method, Map<String, String> paymentData) {
-        Payment payment = new Payment();
-        payment.setId(generatePaymentId());
-        payment.setMethod(method);
-        payment.setStatus("WAITING");
-        payment.setPaymentData(paymentData);
+        String id = generatePaymentId();
+        Payment payment = new Payment(id, method, "WAITING", paymentData);
         return paymentRepository.save(payment);
     }
 
@@ -28,5 +25,13 @@ public class PaymentServiceImpl implements PaymentService {
         }
         payment.setStatus(status);
         return paymentRepository.save(payment);
+    }
+
+    public Payment getPayment(String paymentId) {
+        return paymentRepository.findById(paymentId);
+    }
+
+    public String generatePaymentId() {
+        return "PAYMENT-" + System.currentTimeMillis();
     }
 }

@@ -20,4 +20,13 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setPaymentData(paymentData);
         return paymentRepository.save(payment);
     }
+
+    public Payment setStatus(String paymentId, String status) {
+        Payment payment = paymentRepository.findById(paymentId);
+        if (payment == null) {
+            throw new IllegalArgumentException("Payment not found");
+        }
+        payment.setStatus(status);
+        return paymentRepository.save(payment);
+    }
 }

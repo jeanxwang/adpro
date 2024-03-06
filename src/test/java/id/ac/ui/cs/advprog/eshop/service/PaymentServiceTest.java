@@ -43,4 +43,19 @@ public class PaymentServiceTest {
         assertEquals(paymentData, payment.getPaymentData());
         verify(paymentRepository, times(1)).save(payment);
     }
+
+    @Test
+    void testSetStatus() {
+        // Arrange
+        String paymentId = "123456";
+        Payment payment = new Payment(paymentId, "Bank Transfer", "WAITING", new HashMap<>());
+        when(paymentRepository.findById(paymentId)).thenReturn(payment);
+
+        // Act
+        Payment updatedPayment = paymentService.setStatus(paymentId, "SUCCESS");
+
+        // Assert
+        assertEquals("SUCCESS", updatedPayment.getStatus());
+        verify(paymentRepository, times(1)).save(payment);
+    }
 }

@@ -24,4 +24,15 @@ public class PaymentRepository {
         paymentData.add(payment);
         return payment;
     }
+
+    public Payment findById(String id) {
+        // Cari payment berdasarkan id
+        for (Payment savedPayment : paymentData) {
+            if (savedPayment.getId().equals(id)) {
+                return savedPayment;
+            }
+        }
+        // Jika tidak ditemukan, kembalikan null
+        return null;
+    }
 }

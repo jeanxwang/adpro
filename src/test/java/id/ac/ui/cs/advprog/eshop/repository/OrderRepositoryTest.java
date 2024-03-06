@@ -7,9 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class OrderRepositoryTest {
-    Order Repository orderRepository;
+    OrderRepository orderRepository;
     List<Order> orders;
 
     @BeforeEach
@@ -83,7 +86,7 @@ class OrderRepositoryTest {
             orderRepository.save(order);
         }
 
-        Order findResult = OrderRepository.findById("zczc");
+        Order findResult = orderRepository.findById("zczc");
         assertNull(findResult);
     }
 

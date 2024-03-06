@@ -19,4 +19,12 @@ public class Payment {
         this.status = status;
         this.paymentData = paymentData;
     }
+
+    public void setStatus(String status) {
+        if (PaymentStatus.contains(status)) {
+            this.status = status;
+        } else {
+            throw new IllegalArgumentException("Invalid payment status");
+        }
+    }
 }

@@ -52,4 +52,33 @@ public class PaymentRepositoryTest {
         // Assert
         assertEquals(payment, foundPayment);
     }
+
+    @Test
+    void testFindByIdNotFound() {
+        // Arrange
+        String id = "123456";
+
+        // Act
+        Payment foundPayment = paymentRepository.findById(id);
+
+        // Assert
+        assertNull(foundPayment);
+    }
+
+    @Test
+    void testFindAll() {
+        // Arrange
+        Payment payment1 = new Payment("1", "Method 1", "SUCCESS", new HashMap<>());
+        Payment payment2 = new Payment("2", "Method 2", "REJECTED", new HashMap<>());
+        paymentRepository.save(payment1);
+        paymentRepository.save(payment2);
+
+        // Act
+        List<Payment> payments = paymentRepository.findAll();
+
+        // Assert
+        assertEquals(2, payments.size());
+        assertTrue(payments.contains(payment1));
+        assertTrue(payments.contains(payment2));
+    }
 }
